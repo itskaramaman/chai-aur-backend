@@ -27,7 +27,6 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      required: true,
     },
     coverImage: {
       type: String,
@@ -81,4 +80,4 @@ userSchema.methods.generateRefreshToken = function () {
   );
 };
 
-export const User = mongoose.Model("User", userSchema);
+export const User = mongoose.model("User", userSchema);
