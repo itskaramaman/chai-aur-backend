@@ -8,6 +8,7 @@ import {
   changeCurrentPassword,
   updateUserAvatar,
   updateUserCoverImage,
+  getWatchHistory,
 } from "../controllers/user.controller.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import verifyJWT from "../middlewares/auth.middleware.js";
@@ -21,7 +22,6 @@ router.route("/register").post(
   ]),
   registerUser
 );
-
 router.route("/login").post(loginUser);
 
 //  secured route
@@ -35,4 +35,6 @@ router
   .route("/update-cover-image")
   .post(upload.single("coverImage"), verifyJWT, updateUserCoverImage);
 router.route("/current-user").get(verifyJWT, getCurrentUser);
+router.route("/get-watch-history").get(verifyJWT, getWatchHistory);
+
 export default router;
